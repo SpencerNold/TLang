@@ -1,4 +1,4 @@
-// Generated from C:/Users/spenc/Desktop/GitHub/Tlang/src/main/antlr/TrefoilLexer.g4 by ANTLR 4.13.2
+// Generated from C:/Users/spenc/Desktop/GitHub/TLang/src/main/antlr/TrefoilLexer.g4 by ANTLR 4.13.2
 
 package me.spencernold.tlang.antlr;
 
