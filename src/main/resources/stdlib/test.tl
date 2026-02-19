@@ -6,6 +6,12 @@ class Test {
 
     void test() {
         final ptr uint32[] bruh = 32
+
+
+        main()
+        main(bruh)
+
+        void test = test()
     }
 }
 

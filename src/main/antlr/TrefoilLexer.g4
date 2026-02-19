@@ -4,14 +4,15 @@ lexer grammar TrefoilLexer;
 package me.spencernold.tlang.antlr;
 }
 
-O_PARENTHESES  : '(' ;
-C_PARENTHESES  : ')' ;
-O_C_BRACKET    : '{' ;
-C_C_BRACKET    : '}' ;
-O_BRACKET      : '[' ;
-C_BRACKET      : ']' ;
-DOT            : '.' ;
-COMMA          : ',' ;
+O_PARENTHESES  : '('  ;
+C_PARENTHESES  : ')'  ;
+O_C_BRACKET    : '{'  ;
+C_C_BRACKET    : '}'  ;
+O_BRACKET      : '['  ;
+C_BRACKET      : ']'  ;
+DOT            : '.'  ;
+COMMA          : ','  ;
+DOUBLE_COLON   : '::' ;
 
 TRUE_VALUE     : 'true' ;
 FALSE_VALUE    : 'false' ;
@@ -62,6 +63,8 @@ FUTURE         : 'future' ;
 UNSAFE         : 'unsafe' ;
 DEFER          : 'defer' ;
 EXTERNAL       : 'external' ;
+NATIVE         : 'native' ;
+AS             : 'as' ;
 
 ADD_EQ_OPER    : '+=' ;
 SUB_EQ_OPER    : '-=' ;
@@ -73,10 +76,11 @@ INCR_OPER      : '++' ;
 DECR_OPER      : '--' ;
 POW_OPER       : '**' ;
 
+GT_OPER        : '>' ;
+LT_OPER        : '<' ;
 GT_EQ_OPER     : '>=' ;
 LT_EQ_OPER     : '<=' ;
-BIT_SHL_OPER   : '<<' ;
-BIT_SHR_OPER   : '>>' ;
+
 
 EQ_OPER        : '=' ;
 ADD_OPER       : '+' ;
@@ -85,8 +89,8 @@ MUL_OPER       : '*' ;
 DIV_OPER       : '/' ;
 MOD_OPER       : '%' ;
 
-GT_OPER        : '>' ;
-LT_OPER        : '<' ;
+BIT_SHL_OPER   : '<<' ;
+BIT_SHR_OPER   : '>>' ;
 BIT_AND_OPER   : '&' ;
 BIT_OR_OPER    : '|' ;
 BIT_NOT_OPER   : '~' ;
@@ -96,6 +100,10 @@ AND_OPER       : 'and' ;
 OR_OPER        : 'or' ;
 NOT_OPER       : 'not' ;
 TERNARY_OPER   : '?' ;
+TERN_ELSE_OPER : ':' ;
+
+EQUALITY_OPER     : '==' ;
+NOT_EQUALITY_OPER : '!=' ;
 
 STRING_LIT
     : '"' ( ESC | ~["\\] )* '"'
@@ -119,7 +127,7 @@ IDENTIFIER
     ;
 
 NEWLINE
-    : '\n' -> skip
+    : '\r'? '\n'+
     ;
 
 WS

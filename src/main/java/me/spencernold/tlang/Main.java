@@ -2,10 +2,10 @@ package me.spencernold.tlang;
 
 import me.spencernold.tlang.antlr.TrefoilLexer;
 import me.spencernold.tlang.antlr.TrefoilParser;
+import me.spencernold.tlang.ast.AstBuilder;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,10 +23,11 @@ public class Main {
             TrefoilLexer lexer = new TrefoilLexer(chars);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             TrefoilParser parser = new TrefoilParser(tokens);
+            TrefoilParser.FileContext context = parser.file();
+            AstBuilder builder = new AstBuilder();
+            builder.visitFile(context);
 
-            ParseTree tree = parser.file();
-
-            System.out.println(tree.toStringTree(parser));
+            System.out.println(context.toStringTree(parser));
         } catch (IOException e) {
             e.printStackTrace();
         }
